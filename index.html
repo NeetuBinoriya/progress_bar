@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar SI Calculator</title>
+    <script>
+        function showVal1(invest){
+        document.getElementById("invest").innerHTML = invest;       
+            let rate = document.getElementById("rt").value;
+            let time = document.getElementById("tm").value;
+            calculator_roi(invest, rate, time);
+        }
+        function showVal2(rate){
+            document.getElementById("rate").innerHTML = rate
+            let invest = document.getElementById("im").value;
+            let time = document.getElementById("tm").value;
+            calculator_roi(invest, rate, time);
+        }
+        function showVal3(time){
+            document.getElementById("time").innerHTML = time 
+            let rate = document.getElementById("rt").value;
+            let invest = document.getElementById("im").value;
+            calculator_roi(invest, rate, time);
+        }
+        function calculator_roi(invest1, rate1, time1){
+            document.getElementById("invest1").innerText = invest1;
+            document.getElementById("rate1").innerText = rate1;
+            document.getElementById("time1").innerText = time1;
+            let si = (invest1 * rate1 * time1) / 100;
+            document.getElementById("si").innerText = si;
+            let totalamount = ( parseInt(invest1) + parseInt(si));
+            document.getElementById("totalamount").innerText = totalamount;
+        }
+    </script>
+    <style>
+        input[type=range] {
+    width: 700px;
+    margin-top: 10px;
+        }
+        .main-container{
+            border: 2px solid black;
+            display: block;
+            height: 400px;
+            width: 1000px;
+            align-items: center;
+            justify-content: center;
+            margin: 130px;
+        }
+        table tr th{
+            padding: 20px;           
+        }
+         .total{
+            padding: 20px;
+            margin-right: 20px;
+         }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <table>
+            <tr>
+                <td>
+                    <span id="valBox1">Principal Amount</span>
+                </td>
+                <td>
+                    &#8377;  <span id="invest"></span> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <input
+                        id="im"
+                        type="range"
+                        min="1000"
+                        max="1000000"
+                        step="1"
+                        oninput="showVal1(this.value)"
+                        onchange="showVal1(this.value)"
+                        />
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <span id="valBox2">Rate of Intrest</span>
+                </td>
+                <td><span id="rate"></span> % </td>
+            </tr>
+            <tr>
+                            <td>
+                        <input
+                        id="rt"
+                        type="range"
+                        min="1"
+                        max="50"
+                        step="1"
+                        oninput="showVal2(this.value)"
+                        onchange="showVal2(this.value)"
+                        />
+            </td>
+            
+        </tr>
+            <tr> 
+                <td>
+                    <span id="valBox">Time Period</span>
+                </td>
+                <td>
+                    <span id="time"></span>Year
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <input
+                        id="tm"
+                        type="range"
+                        min="1"
+                        max="30"
+                        step="1"
+                        oninput="showVal3(this.value)"
+                        onchange="showVal3(this.value)"
+                        />
+                    </td>
+                    
+            </tr>
+        </table>
+        <br><br>
+        <table>
+            <tr>
+                <th>Principal Amount</th>
+                <th>Rate of Intrest </th>
+                <th>Time Period</th>
+                <th>Simple Intrest</th>
+                <th>Total Amount</th>
+
+            </tr>
+            <tr>
+                <td class="total">
+                    &#8377;<span id="invest1"></span></td>
+                   <td class="total"> <span id="rate1"></span>%</td>
+                   <td class="total"> <span id="time1"></span> Year</td>
+                   <td class="total"> <span id="si"></span></td>
+                   <td class="total"> <span id="totalamount"></span></td>
+                   
+                
+            </tr>
+        </table>
+</body>
+</html>
